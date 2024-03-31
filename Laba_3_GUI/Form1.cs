@@ -73,9 +73,8 @@ namespace Laba_3_GUI
                 var secondValue = double.Parse(textBox2.Text);
                 var multiplier = 1;
 
-                if (!string.IsNullOrEmpty(textBox3.Text))
+                if (!string.IsNullOrEmpty(textBox3.Text))   //Проверяем, пустое ли поле, если нет, то берём значение
                 {
-                    // Преобразуем значение из textBox3 в double
                     multiplier = (int)double.Parse(textBox3.Text);
                 }
 
@@ -100,12 +99,6 @@ namespace Laba_3_GUI
                         // если минус, то вычитаем
                         sumLength = firstLength - secondLength;
                         break;
-                    //case "*":
-                    //    sumLength = firstLength * secondLength;
-                    //    break;
-                    //case "/":
-                    //    sumLength = firstLength / secondLength;
-                    //    break;
                     default:
                         sumLength = new Quantity(0, MeasureOfType.m3);
                         break;

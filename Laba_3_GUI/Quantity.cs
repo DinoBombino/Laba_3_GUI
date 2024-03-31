@@ -110,17 +110,6 @@ namespace Laba_3_GUI
         {
             return instance1 - instance2.To(instance1.type_of_measure).value;
         }
-        //public static Quantity operator *(Quantity instance1, Quantity instance2)
-        //{
-        //    // к текущей длине добавляем число полученное преобразованием значения второй длины в тип первой длины
-        //    return instance1 * instance2.To(instance1.type_of_measure).value;
-        //}
-
-        //// вычитание двух величин
-        //public static Quantity operator /(Quantity instance1, Quantity instance2)
-        //{
-        //    return instance1 / instance2.To(instance1.type_of_measure).value;
-        //}
 
         public Quantity To(MeasureOfType newType)
         {
@@ -180,7 +169,6 @@ namespace Laba_3_GUI
         //Сравнение
         public static bool operator ==(Quantity instance1, Quantity instance2)
         {
-            // Приводим значения к одному типу измерения и сравниваем их
             return instance1.To(instance2.type_of_measure).value == instance2.value;
         }
 
@@ -191,7 +179,6 @@ namespace Laba_3_GUI
 
         public static bool operator <(Quantity instance1, Quantity instance2)
         {
-            // Приводим значения к одному типу измерения и сравниваем их
             return instance1.To(instance2.type_of_measure).value < instance2.value;
         }
 

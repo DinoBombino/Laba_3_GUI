@@ -97,11 +97,25 @@ namespace Laba_3_GUI
             return instance / number;
         }
 
+        // действия any type and any type
+        // сложение двух величин
+        public static Quantity operator +(Quantity instance1, Quantity instance2)
+        {
+            // к текущей длине добавляем число полученное преобразованием значения второй длины в тип первой длины
+            return instance1 + instance2.To(instance1.type_of_measure).value;
+        }
+
+        // вычитание двух величин
+        public static Quantity operator -(Quantity instance1, Quantity instance2)
+        {
+            return instance1 - instance2.To(instance1.type_of_measure).value;
+        }
+
         public Quantity To(MeasureOfType newType)
         {
             // по умолчанию новое значение совпадает со старым
             var newValue = this.value;
- 
+
             if (this.type_of_measure == MeasureOfType.m3)
             {
                 switch (newType)
@@ -111,17 +125,42 @@ namespace Laba_3_GUI
                         break;
 
                     case MeasureOfType.ml:
-                        newValue = this.value / 1000;
+                        newValue = this.value * 1000;
                         break;
 
                     case MeasureOfType.l:
-                        newValue = this.value ;
+                        newValue = this.value;
                         break;
 
                     case MeasureOfType.b:
                         newValue = this.value * 0.008648;
                         break;
                 }
+            }
+            else if (newType == MeasureOfType.m3)
+            {
+                switch (this.type_of_measure)
+                {
+                    case MeasureOfType.m3:
+                        newValue = this.value;
+                        break;
+
+                    case MeasureOfType.ml:
+                        newValue = this.value / 1000 ;
+                        break;
+
+                    case MeasureOfType.l:
+                        newValue = this.value;
+                        break;
+
+                    case MeasureOfType.b:
+                        newValue = this.value / 0.008648;
+                        break;
+                }
+            }
+            else
+            {
+                newValue = this.To(MeasureOfType.m3).To(newType).value;
             }
             return new Quantity(newValue, newType);
         }

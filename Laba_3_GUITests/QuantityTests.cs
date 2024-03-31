@@ -64,14 +64,42 @@ namespace Laba_3_GUI.Tests
         {
             Quantity quantity;
 
-            quantity = new Quantity(1000, MeasureOfType.m3);
-            Assert.AreEqual("1 мл", quantity.To(MeasureOfType.ml).OutputOfTheValue());
+            quantity = new Quantity(1, MeasureOfType.m3);
+            Assert.AreEqual("1000 мл", quantity.To(MeasureOfType.ml).OutputOfTheValue());
 
-            quantity = new Quantity(149597870700 * 2, MeasureOfType.m3);
-            Assert.AreEqual("2 л", quantity.To(MeasureOfType.l).OutputOfTheValue());
+            quantity = new Quantity(1, MeasureOfType.m3);
+            Assert.AreEqual("1 л", quantity.To(MeasureOfType.l).OutputOfTheValue());
 
-            quantity = new Quantity(3 * 3.0856776 * Math.Pow(10, 16), MeasureOfType.m3);
-            Assert.AreEqual("3 б", quantity.To(MeasureOfType.b).OutputOfTheValue());
+            quantity = new Quantity(1, MeasureOfType.m3);
+            Assert.AreEqual("0,008648 б", quantity.To(MeasureOfType.b).OutputOfTheValue());
+        }
+
+        [TestMethod()]
+        public void AnyToMeterTest()
+        {
+            Quantity quantity;
+
+            quantity = new Quantity(1000, MeasureOfType.ml);
+            Assert.AreEqual("1 м3", quantity.To(MeasureOfType.m3).OutputOfTheValue());
+
+            quantity = new Quantity(1, MeasureOfType.l);
+            Assert.AreEqual("1 м3", quantity.To(MeasureOfType.m3).OutputOfTheValue());
+
+            quantity = new Quantity(1, MeasureOfType.b);
+            Assert.AreEqual("115,63367252543942 м3", quantity.To(MeasureOfType.m3).OutputOfTheValue());
+        }
+
+        [TestMethod()]
+        public void AddSubKmMetersTest()
+        {
+            var m3 = new Quantity(0.100, MeasureOfType.m3);
+            var l = new Quantity(1, MeasureOfType.l);
+
+            Assert.AreEqual("1,1 м3", (m3 + l).OutputOfTheValue());
+            Assert.AreEqual("1,1 л", (l + m3).OutputOfTheValue());
+
+            Assert.AreEqual("0,9 л", (l - m3).OutputOfTheValue());
+            Assert.AreEqual("-0,9 м3", (m3 - l).OutputOfTheValue());
         }
     }
 }

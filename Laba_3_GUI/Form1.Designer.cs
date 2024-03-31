@@ -39,6 +39,14 @@
             cmBox1 = new ComboBox();
             cmBox2 = new ComboBox();
             cmBox3 = new ComboBox();
+            textBox3 = new TextBox();
+            label4 = new Label();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            textBox6 = new TextBox();
+            ComparisonBox1 = new ComboBox();
+            ComparisonBox2 = new ComboBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -76,7 +84,7 @@
             // cmbOperation
             // 
             cmbOperation.FormattingEnabled = true;
-            cmbOperation.Items.AddRange(new object[] { "+", "-", "*", "/" });
+            cmbOperation.Items.AddRange(new object[] { "+", "-", "* на число" });
             cmbOperation.Location = new Point(131, 107);
             cmbOperation.Name = "cmbOperation";
             cmbOperation.Size = new Size(49, 23);
@@ -140,11 +148,88 @@
             cmBox3.TabIndex = 10;
             cmBox3.SelectedIndexChanged += onValueChanged;
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(186, 107);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(51, 23);
+            textBox3.TabIndex = 11;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(243, 110);
+            label4.Name = "label4";
+            label4.Size = new Size(63, 15);
+            label4.TabIndex = 12;
+            label4.Text = "<-- Число";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(350, 157);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(49, 23);
+            textBox4.TabIndex = 13;
+            textBox4.TextChanged += onCompareValues;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(462, 157);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(42, 23);
+            textBox5.TabIndex = 14;
+            textBox5.TextChanged += onCompareValues;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(510, 157);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(49, 23);
+            textBox6.TabIndex = 15;
+            textBox6.TextChanged += onCompareValues;
+            // 
+            // ComparisonBox1
+            // 
+            ComparisonBox1.FormattingEnabled = true;
+            ComparisonBox1.Items.AddRange(new object[] { "м3", "мл", "л", "б" });
+            ComparisonBox1.Location = new Point(405, 157);
+            ComparisonBox1.Name = "ComparisonBox1";
+            ComparisonBox1.Size = new Size(51, 23);
+            ComparisonBox1.TabIndex = 16;
+            ComparisonBox1.SelectedIndexChanged += onCompareValues;
+            // 
+            // ComparisonBox2
+            // 
+            ComparisonBox2.FormattingEnabled = true;
+            ComparisonBox2.Items.AddRange(new object[] { "м3", "мл", "л", "б" });
+            ComparisonBox2.Location = new Point(565, 157);
+            ComparisonBox2.Name = "ComparisonBox2";
+            ComparisonBox2.Size = new Size(51, 23);
+            ComparisonBox2.TabIndex = 17;
+            ComparisonBox2.SelectedIndexChanged += onCompareValues;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(350, 130);
+            label5.Name = "label5";
+            label5.Size = new Size(103, 15);
+            label5.TabIndex = 18;
+            label5.Text = "Сравнение чисел";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(636, 266);
+            Controls.Add(label5);
+            Controls.Add(ComparisonBox2);
+            Controls.Add(ComparisonBox1);
+            Controls.Add(textBox6);
+            Controls.Add(textBox5);
+            Controls.Add(textBox4);
+            Controls.Add(label4);
+            Controls.Add(textBox3);
             Controls.Add(cmBox3);
             Controls.Add(cmBox2);
             Controls.Add(cmBox1);
@@ -175,5 +260,13 @@
         private ComboBox cmBox1;
         private ComboBox cmBox2;
         private ComboBox cmBox3;
+        private TextBox textBox3;
+        private Label label4;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private TextBox textBox6;
+        private ComboBox ComparisonBox1;
+        private ComboBox ComparisonBox2;
+        private Label label5;
     }
 }

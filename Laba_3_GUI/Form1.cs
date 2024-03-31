@@ -35,6 +35,9 @@ namespace Laba_3_GUI
             cmBox1.DataSource = new List<string>(measureItems);
             cmBox2.DataSource = new List<string>(measureItems);
             cmBox3.DataSource = new List<string>(measureItems);
+
+            ComparisonBox1.DataSource = new List<string>(measureItems);
+            ComparisonBox2.DataSource = new List<string>(measureItems);
         }
 
         private MeasureOfType GetMeasureOfType(ComboBox comboBox)
@@ -90,12 +93,12 @@ namespace Laba_3_GUI
                         // если минус, то вычитаем
                         sumLength = firstLength - secondLength;
                         break;
-                    case "*":
-                        sumLength = firstLength * secondLength;
-                        break;
-                    case "/":
-                        sumLength = firstLength / secondLength;
-                        break;
+                    //case "*":
+                    //    sumLength = firstLength * secondLength;
+                    //    break;
+                    //case "/":
+                    //    sumLength = firstLength / secondLength;
+                    //    break;
                     default:
                         sumLength = new Quantity(0, MeasureOfType.m3);
                         break;
@@ -120,6 +123,49 @@ namespace Laba_3_GUI
         private void onValueChanged(object sender, EventArgs e)
         {
             Calculate();
+        }
+
+        //Сравнение
+        private void CompareValues()
+        {
+            try
+            {
+                double value1 = double.Parse(textBox4.Text);
+                double value2 = double.Parse(textBox6.Text);
+
+                MeasureOfType measure1 = GetMeasureOfType(ComparisonBox1);
+                MeasureOfType measure2 = GetMeasureOfType(ComparisonBox2);
+
+                Quantity quantity1 = new Quantity(value1, measure1);
+                Quantity quantity2 = new Quantity(value2, measure2);
+
+                //quantity1 = quantity1.To(MeasureOfType.m3);
+                //quantity2 = quantity2.To(MeasureOfType.m3);
+
+                // Сравниваем значения
+                if (quantity1 == quantity2)
+                {
+                    textBox5.Text = "=";
+                }
+                else if (quantity1 < quantity2)
+                {
+                    textBox5.Text = "<";
+                }
+                else
+                {
+                    textBox5.Text = ">";
+                }
+            }
+            catch (FormatException)
+            {
+                // В случае некорректного ввода выводим сообщение об ошибке или предпринимаем другие действия
+                //MessageBox.Show("Некорректный ввод", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void onCompareValues(object sender, EventArgs e)
+        {
+            CompareValues();
         }
     }
 }

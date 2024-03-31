@@ -27,23 +27,103 @@ namespace Laba_3_GUI
 
         public string OutputOfTheValue()
         {
-            string typeOutputOfTheValue = "";
+            string typeOutput = "";
             switch (this.type_of_measure)
             {
                 case MeasureOfType.m3:
-                    typeOutputOfTheValue = "м3";
+                    typeOutput = "м3";
                     break;
                 case MeasureOfType.ml:
-                    typeOutputOfTheValue = "мл";
+                    typeOutput = "мл";
                     break;
                 case MeasureOfType.l:
-                    typeOutputOfTheValue = "л";
+                    typeOutput = "л";
                     break;
                 case MeasureOfType.b:
-                    typeOutputOfTheValue = "б";
+                    typeOutput = "б";
                     break;
-            };
-            return String.Format("{0} {1}", this.value, this.type_of_measure);
+            }
+            return String.Format("{0} {1}", this.value, typeOutput);
+        }
+
+        // сложение
+        public static Quantity operator +(Quantity instance, double number)
+        {
+            // расчитываем новую значение
+            var newValue = instance.value + number;
+            // создаем новый экземпляр класса, с новый значением и типом как у меры, к которой число добавляем
+            var Quantity = new Quantity(newValue, instance.type_of_measure);
+            // возвращаем результат
+            return Quantity;
+        }
+
+        public static Quantity operator +(double number, Quantity instance)
+        {
+            // вызываем с правильным порядком аргументов, то есть сначала длина потом число
+            // для такого порядка мы определили оператор выше
+            return instance + number;
+        }
+
+        // умножение
+        public static Quantity operator *(Quantity instance, double number)
+        {
+            return new Quantity(instance.value * number, instance.type_of_measure); ;
+        }
+
+        public static Quantity operator *(double number, Quantity instance)
+        {
+            return instance * number;
+        }
+
+        // вычитание
+        public static Quantity operator -(Quantity instance, double number)
+        {
+            return new Quantity(instance.value - number, instance.type_of_measure); ;
+        }
+
+        public static Quantity operator -(double number, Quantity instance)
+        {
+            return instance - number;
+        }
+
+        // деление
+        public static Quantity operator /(Quantity instance, double number)
+        {
+            return new Quantity(instance.value / number, instance.type_of_measure); ;
+        }
+
+        public static Quantity operator /(double number, Quantity instance)
+        {
+            return instance / number;
+        }
+
+        public Quantity To(MeasureOfType newType)
+        {
+            // по умолчанию новое значение совпадает со старым
+            var newValue = this.value;
+ 
+            if (this.type_of_measure == MeasureOfType.m3)
+            {
+                switch (newType)
+                {
+                    case MeasureOfType.m3:
+                        newValue = this.value;
+                        break;
+
+                    case MeasureOfType.ml:
+                        newValue = this.value / 1000;
+                        break;
+
+                    case MeasureOfType.l:
+                        newValue = this.value ;
+                        break;
+
+                    case MeasureOfType.b:
+                        newValue = this.value * 0.008648;
+                        break;
+                }
+            }
+            return new Quantity(newValue, newType);
         }
     }
 }

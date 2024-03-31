@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laba_3_GUI", "Laba_3_GUI\Laba_3_GUI.csproj", "{34DF796C-BE9F-4AC6-9EA2-F0BD623ADD1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laba_3_GUITests", "Laba_3_GUITests\Laba_3_GUITests.csproj", "{DA571210-C3EF-4741-B718-947CAF67D9F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34DF796C-BE9F-4AC6-9EA2-F0BD623ADD1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DF796C-BE9F-4AC6-9EA2-F0BD623ADD1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DF796C-BE9F-4AC6-9EA2-F0BD623ADD1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DF796C-BE9F-4AC6-9EA2-F0BD623ADD1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA571210-C3EF-4741-B718-947CAF67D9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA571210-C3EF-4741-B718-947CAF67D9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA571210-C3EF-4741-B718-947CAF67D9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA571210-C3EF-4741-B718-947CAF67D9F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C94081D-986B-4D02-A148-75DC6AB8330B}
+	EndGlobalSection
+EndGlobal

@@ -106,6 +106,7 @@ namespace Laba_3_GUI
             catch (FormatException)
             {
                 // если тип преобразовать не смогли
+                //MessageBox.Show("Некорректный ввод", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);   //Если так делать, то в свойствах текстбоксов надо поставить текст, который будет начальным
             }
         }
 

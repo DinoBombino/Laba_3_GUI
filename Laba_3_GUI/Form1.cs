@@ -71,6 +71,13 @@ namespace Laba_3_GUI
                 // эти строчки не трогаем
                 var firstValue = double.Parse(textBox1.Text);
                 var secondValue = double.Parse(textBox2.Text);
+                var multiplier = 1;
+
+                if (!string.IsNullOrEmpty(textBox3.Text))
+                {
+                    // Преобразуем значение из textBox3 в double
+                    multiplier = (int)double.Parse(textBox3.Text);
+                }
 
                 MeasureOfType firstType = GetMeasureOfType(cmBox1);
                 MeasureOfType secondType = GetMeasureOfType(cmBox2);
@@ -104,6 +111,8 @@ namespace Laba_3_GUI
                         break;
                 }
 
+                sumLength *= multiplier;
+
                 txtResult.Text = sumLength.To(resultType).OutputOfTheValue();
             }
             catch (FormatException)
@@ -118,6 +127,9 @@ namespace Laba_3_GUI
             textBox1.Clear();
             textBox2.Clear();
             txtResult.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
         }
 
         private void onValueChanged(object sender, EventArgs e)
@@ -138,9 +150,6 @@ namespace Laba_3_GUI
 
                 Quantity quantity1 = new Quantity(value1, measure1);
                 Quantity quantity2 = new Quantity(value2, measure2);
-
-                //quantity1 = quantity1.To(MeasureOfType.m3);
-                //quantity2 = quantity2.To(MeasureOfType.m3);
 
                 // Сравниваем значения
                 if (quantity1 == quantity2)

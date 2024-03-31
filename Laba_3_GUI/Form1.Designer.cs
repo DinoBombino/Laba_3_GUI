@@ -154,6 +154,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(51, 23);
             textBox3.TabIndex = 11;
+            textBox3.TextChanged += onValueChanged;
             // 
             // label4
             // 
@@ -166,7 +167,7 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(350, 157);
+            textBox4.Location = new Point(348, 180);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(49, 23);
             textBox4.TabIndex = 13;
@@ -174,7 +175,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(462, 157);
+            textBox5.Location = new Point(460, 180);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(42, 23);
             textBox5.TabIndex = 14;
@@ -182,7 +183,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(510, 157);
+            textBox6.Location = new Point(508, 180);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(49, 23);
             textBox6.TabIndex = 15;
@@ -192,7 +193,7 @@
             // 
             ComparisonBox1.FormattingEnabled = true;
             ComparisonBox1.Items.AddRange(new object[] { "м3", "мл", "л", "б" });
-            ComparisonBox1.Location = new Point(405, 157);
+            ComparisonBox1.Location = new Point(403, 180);
             ComparisonBox1.Name = "ComparisonBox1";
             ComparisonBox1.Size = new Size(51, 23);
             ComparisonBox1.TabIndex = 16;
@@ -202,7 +203,7 @@
             // 
             ComparisonBox2.FormattingEnabled = true;
             ComparisonBox2.Items.AddRange(new object[] { "м3", "мл", "л", "б" });
-            ComparisonBox2.Location = new Point(565, 157);
+            ComparisonBox2.Location = new Point(563, 180);
             ComparisonBox2.Name = "ComparisonBox2";
             ComparisonBox2.Size = new Size(51, 23);
             ComparisonBox2.TabIndex = 17;
@@ -211,7 +212,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(350, 130);
+            label5.Location = new Point(348, 153);
             label5.Name = "label5";
             label5.Size = new Size(103, 15);
             label5.TabIndex = 18;

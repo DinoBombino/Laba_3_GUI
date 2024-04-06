@@ -68,12 +68,11 @@ namespace Laba_3_GUI
         {
             try
             {
-                // эти строчки не трогаем
                 var firstValue = double.Parse(textBox1.Text);
                 var secondValue = double.Parse(textBox2.Text);
                 var multiplier = 1;
 
-                if (!string.IsNullOrEmpty(textBox3.Text))   //Проверяем, пустое ли поле, если нет, то берём значение
+                if (!string.IsNullOrEmpty(textBox3.Text))   //Проверяем, пустое ли поле, если нет, то берём значение из textbox'a
                 {
                     multiplier = (int)double.Parse(textBox3.Text);
                 }
@@ -85,28 +84,29 @@ namespace Laba_3_GUI
                 var firstLength = new Quantity(firstValue, firstType);
                 var secondLength = new Quantity(secondValue, secondType);
 
-                // заводим неинициализированную переменную под длину
+                // заводим неинициализированную переменную под объём
                 Quantity sumLength;
 
                 // смотрим что выбрали в cmbOperation
                 switch (cmbOperation.Text)
                 {
                     case "+":
-                        // если плюсик выбрали, то складываем
+                        // если +, то складываем
                         sumLength = firstLength + secondLength;
                         break;
                     case "-":
-                        // если минус, то вычитаем
+                        // если -, то вычитаем
                         sumLength = firstLength - secondLength;
                         break;
                     default:
+                        //по умолчанию 0
                         sumLength = new Quantity(0, MeasureOfType.m3);
                         break;
                 }
 
-                sumLength *= multiplier;
+                sumLength *= multiplier;    //для умножения на число
 
-                txtResult.Text = sumLength.To(resultType).OutputOfTheValue();
+                txtResult.Text = sumLength.To(resultType).OutputOfTheValue();   //результат с учётом меры
             }
             catch (FormatException)
             {
@@ -141,8 +141,8 @@ namespace Laba_3_GUI
                 MeasureOfType measure1 = GetMeasureOfType(ComparisonBox1);
                 MeasureOfType measure2 = GetMeasureOfType(ComparisonBox2);
 
-                Quantity quantity1 = new Quantity(value1, measure1);
-                Quantity quantity2 = new Quantity(value2, measure2);
+                var quantity1 = new Quantity(value1, measure1);
+                var quantity2 = new Quantity(value2, measure2);
 
                 // Сравниваем значения
                 if (quantity1 == quantity2)

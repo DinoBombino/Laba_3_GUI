@@ -49,7 +49,7 @@ namespace Laba_3_GUI
         // сложение
         public static Quantity operator +(Quantity instance, double number)
         {
-            // расчитываем новую значение
+            // расчитываем новое значение
             var newValue = instance.value + number;
             // создаем новый экземпляр класса, с новый значением и типом как у меры, к которой число добавляем
             var Quantity = new Quantity(newValue, instance.type_of_measure);
@@ -196,6 +196,5 @@ namespace Laba_3_GUI
         {
             return instance1 == instance2 || instance1 > instance2;
         }
-
     }
 }

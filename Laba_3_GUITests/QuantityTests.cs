@@ -11,7 +11,7 @@ namespace Laba_3_GUI.Tests
     [TestClass()]
     public class QuantityTests
     {
-        [TestMethod()]
+        [TestMethod()]  //Четыре типа величин
         public void OutputOfTheValueTest()
         {
             var quantity = new Quantity(10, MeasureOfType.m3);
@@ -27,7 +27,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("10 б", quantity.OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //добавление числа к значение с величиной
         public void AddNumberTest()
         {
             var quantity = new Quantity(1, MeasureOfType.m3);
@@ -35,7 +35,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("5,25 м3", quantity.OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //выичтание числа из значения с величиной
         public void SubNumberTest()
         {
             var quantity = new Quantity(3, MeasureOfType.m3);
@@ -43,7 +43,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("1,25 м3", quantity.OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //умножение значения с величной на число
         public void MulByNumberTest()
         {
             var quantity = new Quantity(3, MeasureOfType.m3);
@@ -51,7 +51,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("9 м3", quantity.OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //деление значения с величиной на число
         public void DivByNumberTest()
         {
             var quantity = new Quantity(3, MeasureOfType.m3);
@@ -59,7 +59,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("1 м3", quantity.OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //Соответствие величин(например, 1л=1000мл)
         public void MeterToAnyTest()
         {
             Quantity quantity;
@@ -74,7 +74,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("0,008648 б", quantity.To(MeasureOfType.b).OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //Соответствие величин обратное(напрмиер, 1000мл=1л)
         public void AnyToMeterTest()
         {
             Quantity quantity;
@@ -89,7 +89,7 @@ namespace Laba_3_GUI.Tests
             Assert.AreEqual("115,63367252543942 м3", quantity.To(MeasureOfType.m3).OutputOfTheValue());
         }
 
-        [TestMethod()]
+        [TestMethod()]  //сложение и вычитание из одной величины другую
         public void AddSubKmMetersTest()
         {
             var m3 = new Quantity(0.100, MeasureOfType.m3);

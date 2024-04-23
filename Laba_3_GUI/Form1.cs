@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 /*Мера объема, задаваемая в виде пары (значение, тип), допустимые типы: м^3, миллилитры, литры, баррель
 -сложение
@@ -22,6 +23,9 @@ namespace Laba_3_GUI
         public Form1()
         {
             InitializeComponent();
+
+            textBox1.Text = Properties.Settings.Default.number1.ToString();
+            textBox2.Text = Properties.Settings.Default.number2.ToString();
 
             var measureItems = new string[]
         {
@@ -68,13 +72,24 @@ namespace Laba_3_GUI
         {
             try
             {
-                var firstValue = double.Parse(textBox1.Text);
-                var secondValue = double.Parse(textBox2.Text);
-                var multiplier = 1;
 
+                double firstValue = /*double.Parse(textBox1.Text)*/0;
+                double secondValue = /*double.Parse(textBox2.Text)*/0;
+                double multiplier = 1;
+
+                ///это для того чтобы можно было умножить только одну строку, а не обе 
+                if (!string.IsNullOrEmpty(textBox1.Text))   //Проверяем, пустое ли поле, если нет, то берём значение из textbox'a
+                {
+                    firstValue = double.Parse(textBox1.Text);
+                }
+                if (!string.IsNullOrEmpty(textBox2.Text))   //Проверяем, пустое ли поле, если нет, то берём значение из textbox'a
+                {
+                    secondValue = double.Parse(textBox2.Text);
+                }
+                ///
                 if (!string.IsNullOrEmpty(textBox3.Text))   //Проверяем, пустое ли поле, если нет, то берём значение из textbox'a
                 {
-                    multiplier = (int)double.Parse(textBox3.Text);
+                    multiplier = double.Parse(textBox3.Text);
                 }
 
                 MeasureOfType firstType = GetMeasureOfType(cmBox1);
@@ -106,6 +121,10 @@ namespace Laba_3_GUI
 
                 sumLength *= multiplier;    //для умножения на число
 
+                Properties.Settings.Default.number1 = textBox1.Text;
+                Properties.Settings.Default.number2 = textBox2.Text;
+                Properties.Settings.Default.Save();
+
                 txtResult.Text = sumLength.To(resultType).OutputOfTheValue();   //результат с учётом меры
             }
             catch (FormatException)
@@ -120,6 +139,7 @@ namespace Laba_3_GUI
             textBox1.Clear();
             textBox2.Clear();
             txtResult.Clear();
+            textBox3.Clear();
             textBox4.Clear();
             textBox5.Clear();
             textBox6.Clear();
@@ -153,7 +173,7 @@ namespace Laba_3_GUI
                 {
                     textBox5.Text = "<";
                 }
-                else
+                else if (quantity1 > quantity2)
                 {
                     textBox5.Text = ">";
                 }

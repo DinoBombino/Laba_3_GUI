@@ -49,19 +49,12 @@ namespace Laba_3_GUI
         // сложение
         public static Quantity operator +(Quantity instance, double number)
         {
-            // расчитываем новое значение
+            // расчитываем новое значение 3л+4=7л
             var newValue = instance.value + number;
             // создаем новый экземпляр класса, с новый значением и типом как у меры, к которой число добавляем
             var Quantity = new Quantity(newValue, instance.type_of_measure);
             // возвращаем результат
             return Quantity;
-        }
-
-        public static Quantity operator +(double number, Quantity instance)
-        {
-            // вызываем с правильным порядком аргументов, то есть сначала длина потом число
-            // для такого порядка мы определили оператор выше
-            return instance + number;
         }
 
         // умножение
@@ -70,36 +63,15 @@ namespace Laba_3_GUI
             return new Quantity(instance.value * number, instance.type_of_measure); ;
         }
 
-        public static Quantity operator *(double number, Quantity instance)
-        {
-            return instance * number;
-        }
-
         // вычитание
         public static Quantity operator -(Quantity instance, double number)
         {
             return new Quantity(instance.value - number, instance.type_of_measure); ;
         }
 
-        public static Quantity operator -(double number, Quantity instance)
-        {
-            return instance - number;
-        }
-
-        // деление
-        public static Quantity operator /(Quantity instance, double number)
-        {
-            return new Quantity(instance.value / number, instance.type_of_measure); ;
-        }
-
-        public static Quantity operator /(double number, Quantity instance)
-        {
-            return instance / number;
-        }
-
         // действия any type and any type
         // сложение двух величин
-        public static Quantity operator +(Quantity instance1, Quantity instance2)
+        public static Quantity operator +(Quantity instance1, Quantity instance2) 
         {
             // к текущей длине добавляем число полученное преобразованием значения второй длины в тип первой длины
             return instance1 + instance2.To(instance1.type_of_measure).value;
@@ -125,11 +97,11 @@ namespace Laba_3_GUI
                         break;
 
                     case MeasureOfType.ml:
-                        newValue = this.value * 1000;
+                        newValue = this.value * 1000000;
                         break;
 
                     case MeasureOfType.l:
-                        newValue = this.value;
+                        newValue = this.value *1000;
                         break;
 
                     case MeasureOfType.b:
@@ -146,11 +118,11 @@ namespace Laba_3_GUI
                         break;
 
                     case MeasureOfType.ml:
-                        newValue = this.value / 1000 ;
+                        newValue = this.value / 1000000;
                         break;
 
                     case MeasureOfType.l:
-                        newValue = this.value;
+                        newValue = this.value / 1000;
                         break;
 
                     case MeasureOfType.b:
@@ -164,7 +136,6 @@ namespace Laba_3_GUI
             }
             return new Quantity(newValue, newType);
         }
-
 
         //Сравнение
         public static bool operator ==(Quantity instance1, Quantity instance2)
@@ -185,16 +156,6 @@ namespace Laba_3_GUI
         public static bool operator >(Quantity instance1, Quantity instance2)
         {
             return instance2 < instance1;
-        }
-
-        public static bool operator <=(Quantity instance1, Quantity instance2)
-        {
-            return instance1 == instance2 || instance1 < instance2;
-        }
-
-        public static bool operator >=(Quantity instance1, Quantity instance2)
-        {
-            return instance1 == instance2 || instance1 > instance2;
         }
     }
 }

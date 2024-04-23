@@ -22,5 +22,29 @@ namespace Laba_3_GUI.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string number1 {
+            get {
+                return ((string)(this["number1"]));
+            }
+            set {
+                this["number1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string number2 {
+            get {
+                return ((string)(this["number2"]));
+            }
+            set {
+                this["number2"] = value;
+            }
+        }
     }
 }
